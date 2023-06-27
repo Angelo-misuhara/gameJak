@@ -42,6 +42,13 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+//scoring//
+let aiScore = document.querySelector('#ai-score');
+let humanScore = document.querySelector('#human-score');
+
+let countHuman=0;
+
+let countAi=0;
 
 
 
@@ -60,9 +67,10 @@ scissors.addEventListener('click', function () {
   if (arrayMoves[random] === 'palm') {
     sleep(2000).then(() => {
       result.innerText = 'You win';
-      resultimg.src='img/happy.png'
+      resultimg.src = 'img/happy.png'
+      countHuman++;
+      humanScore.innerText = 'You-' + countHuman;
     });
-    
 
   } else if (arrayMoves[random] === 'scissorts') {
     sleep(2000).then(() => {
@@ -70,10 +78,13 @@ scissors.addEventListener('click', function () {
       resultimg.src='img/tei.png'
 
     });
+
   } else {
     sleep(2000).then(() => {
       result.innerText = 'You lose'
-      resultimg.src='img/defeat.png'
+      resultimg.src = 'img/defeat.png'
+      countAi++;
+      aiScore.innerText = 'Ai-' + countAi;
     });
   }
   result.innerText = '';
@@ -95,14 +106,18 @@ rock.addEventListener('click', function () {
   if (arrayMoves[random] === 'palm') {
   sleep(2000).then(() => {
       result.innerText = 'You lose'
-      resultimg.src='img/defeat.png'
+      resultimg.src = 'img/defeat.png'
+      countAi++;
+      aiScore.innerText = 'Ai-' + countAi;
     });
 
   } else if (arrayMoves[random]==='scissorts') {
   sleep(2000).then(() => {
       result.innerText = 'You win';
-      resultimg.src='img/happy.png'
-    });
+      resultimg.src = 'img/happy.png'
+      countHuman++;
+      humanScore.innerText = 'You-' + countHuman;
+  });
     
   } else {
     sleep(2000).then(() => {
@@ -134,17 +149,21 @@ paper.addEventListener('click', function () {
   } else if (arrayMoves[random]==='scissorts') {
   sleep(2000).then(() => {
       result.innerText = 'You lose';
-      resultimg.src='img/defeat.png'
+      resultimg.src = 'img/defeat.png'
+      countAi++;
+      aiScore.innerText = 'Ai-' + countAi;
     });
     
   } else {
     sleep(2000).then(() => {
       result.innerText = 'You win';
-      resultimg.src='img/happy.png'
+      resultimg.src = 'img/happy.png'
+      countHuman++;
+      humanScore.innerText = 'You-' + countHuman;
     });
   }
-      result.innerText = '';
-      resultimg.src='img/loading.png'
+  result.innerText = '';
+    resultimg.src='img/loading.png'
 });
 
 redo.addEventListener('click', function () {
@@ -153,3 +172,5 @@ redo.addEventListener('click', function () {
   aiPng.src = 'img/robot.png'
   });
 });
+
+
